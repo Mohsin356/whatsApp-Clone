@@ -6,4 +6,5 @@ class UiColors{
   static const txtClr= Colors.black;
   static const cursorColor= Color(0xff075E54);
   static const labelClr = Colors.grey;
+  static const textUnderLine= Color(0xff075E54);
 }
