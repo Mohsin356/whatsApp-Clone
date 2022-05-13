@@ -1,15 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:whatsappclone/controllers/verifyPhoneController.dart';
 import 'package:whatsappclone/utils/colors.dart';
 import 'package:whatsappclone/utils/txtHeadings.dart';
 import 'package:whatsappclone/utils/texts.dart';
 import 'package:whatsappclone/views/screens/smsVerification.dart';
 import 'package:whatsappclone/views/widgets/buttonWidget.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:whatsappclone/views/widgets/textField.dart';
+
 class VerifyPhone extends StatelessWidget {
   VerifyPhone({Key? key}) : super(key: key);
-  var phNo= TextEditingController();
-  var countryCode = TextEditingController();
+  var phNo = TextEditingController();
+  var codeChangeController = Get.put(VerifyPhoneController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,59 +24,61 @@ class VerifyPhone extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child:  Text(Headings.verifyPhoneHeading,style: TextStyle(fontWeight: FontWeight.bold,
-                      fontSize: 25,color:UiColors.headingClr),),
+                  child: Text(Headings.verifyPhoneHeading,
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: 25, color: UiColors.headingClr),),
                 ),
-               Column(
-                 children: [
-                  const Text(Texts.verifyPhoneTxt,style:TextStyle(fontSize: 15),textAlign: TextAlign.center,),
-                   DropdownButtonFormField<String>(
-                     hint: const Text('Select Your Country'),
-                     items: <String>['A', 'B', 'C', 'D'].map((String value) {
-                       return DropdownMenuItem<String>(
-                         value: value,
-                         child:  Text(value),
-                       );
-                     }).toList(),
-                     onChanged: (_) {},
-                   ),
-                   // ListTile(
-                   //   onTap: (){},
-                   //   title: Text("Select Country",),
-                   //
-                   // ),
-                   Row(
-                       children: <Widget>[
-                         Container(
-                           decoration: const BoxDecoration(
-                               border: Border(
-                                   bottom: BorderSide(
-                                     width: 1.50,
-                                     color: UiColors.textUnderLine,
-                                   ))),
-                           width: 80,
-                           height: 42,
-                           alignment: Alignment.center,
-                           child: const  Text("Country Code"),
-                         ),
-                         const SizedBox(
-                           width: 8.0,
-                         ),
-                         Expanded(
-                           child: SizedBox(
-                             height: 40,
-                             child: TextField(
-                               controller: phNo,
-                               decoration: const InputDecoration(hintText: "Phone Number"),
-                             ),
-                           ),
-                         ),
-
-                       ]
-                   ),
-                 ],
-               ),
-                CommonButton(buttonText: "Next", func: (){
+                const SizedBox(
+                  height: 30,
+                ),
+                const Text(Texts.verifyPhoneTxt, style: TextStyle(fontSize: 15),
+                  textAlign: TextAlign.center,),
+                Card(
+                  child: CountryCodePicker(
+                    padding: const EdgeInsets.all(0),
+                    initialSelection: "Pk",
+                    alignLeft: true,
+                    showDropDownButton: true,
+                    onChanged: (value) {
+                      codeChangeController.initialCode.value = value.dialCode!;
+                      print(codeChangeController.initialCode.value);
+                      //  codeChangeController.initialCode.;
+                    },
+                  ),
+                ),
+                Row(
+                    children: <Widget>[
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                  width: 1.50,
+                                  color: UiColors.textUnderLine,
+                                ))),
+                        width: 80,
+                        height: 42,
+                        alignment: Alignment.center,
+                        child: Obx(() {
+                          return Text(codeChangeController.initialCode.value);
+                        }),
+                      ),
+                      const SizedBox(
+                        width: 8.0,
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: 40,
+                          child: CustomTextField(
+                            controller: phNo,
+                            title: "Phone Number",
+                            inputType: TextInputType.phone,
+                            cursorClr: UiColors.cursorColor,
+                            underlineClr: UiColors.textUnderLine,),
+                        ),
+                      ),
+                    ]
+                ),
+                CommonButton(buttonText: "Next", func: () {
                   Get.to(SmsVerification());
                 }, buttonClr: UiColors.btnClr),
 

@@ -1,17 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:whatsappclone/utils/colors.dart';
 import 'package:whatsappclone/utils/txtHeadings.dart';
 import 'package:whatsappclone/utils/texts.dart';
 import 'package:whatsappclone/views/widgets/buttonWidget.dart';
-import 'package:pin_code_text_field/pin_code_text_field.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
+
 
 class SmsVerification extends StatelessWidget {
   SmsVerification({Key? key}) : super(key: key);
   var phNo= TextEditingController();
+
   var countryCode = TextEditingController();
-  TextEditingController _pinCodeController=TextEditingController();
+
+  final TextEditingController textEditingController=TextEditingController();
+  TextEditingController newTextEditingController = TextEditingController();
+  FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,25 +32,38 @@ class SmsVerification extends StatelessWidget {
                   child:  Text(Headings.verifyPhoneHeading,style: TextStyle(fontWeight: FontWeight.bold,
                       fontSize: 25,color:UiColors.headingClr),),
                 ),
-                Column(
-                  children: [
-                    const Text(Texts.verifyPhoneTxt,style:TextStyle(fontSize: 15),textAlign: TextAlign.center,),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        children: <Widget>[
-                          const Text("Enter your 6 digit code"),
-                          PinCodeTextField(
-                            controller: _pinCodeController,
-                            maxLength: 4,
-                            hideCharacter: true,
-                            ),
-
-                        ],
-                      ),
-                    )
-                  ],
+                const SizedBox(
+                  height: 30,
                 ),
+                const Text(Texts.verifyPhoneTxt,style:TextStyle(fontSize: 15),textAlign: TextAlign.center,),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text("Enter your 6 digit code",style:TextStyle(fontSize: 15),),
+                const SizedBox(
+                  height: 15,
+                ),
+                OTPTextField(
+                  length: 6,
+                  width: MediaQuery.of(context).size.width,
+                  fieldWidth: 30,
+                  obscureText: true,
+                  style: TextStyle(
+                      fontSize: 20
+                  ),
+                  textFieldAlignment: MainAxisAlignment.spaceAround,
+                  fieldStyle: FieldStyle.underline,
+                    onChanged: (String? pin) {
+                      if (pin?.length == 6) {
+                        print(pin);
+                      }
+                    }
+                  // onCompleted: (pin)
+                  // {
+                  //   print("Completed:" + pin);
+                  // },
+                ),
+
                 CommonButton(buttonText: "Next", func: (){}, buttonClr: UiColors.btnClr),
 
               ],
