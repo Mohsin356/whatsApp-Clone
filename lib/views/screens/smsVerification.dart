@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:whatsappclone/utils/colors.dart';
-import 'package:whatsappclone/utils/txtHeadings.dart';
 import 'package:whatsappclone/utils/texts.dart';
+import 'package:whatsappclone/views/screens/personalInfo.dart';
 import 'package:whatsappclone/views/widgets/buttonWidget.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -29,7 +29,7 @@ class SmsVerification extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child:  Text(Headings.verifyPhoneHeading,style: TextStyle(fontWeight: FontWeight.bold,
+                  child:  Text("Verify Your Phone Number",style: TextStyle(fontWeight: FontWeight.bold,
                       fontSize: 25,color:UiColors.headingClr),),
                 ),
                 const SizedBox(
@@ -63,8 +63,10 @@ class SmsVerification extends StatelessWidget {
                   //   print("Completed:" + pin);
                   // },
                 ),
-
-                CommonButton(buttonText: "Next", func: (){}, buttonClr: UiColors.btnClr),
+                const SizedBox(height: 10,),
+                CommonButton(buttonText: "Next", func: (){
+                  Get.to(PersonalInfo());
+                }, buttonClr: UiColors.btnClr),
 
               ],
             ),

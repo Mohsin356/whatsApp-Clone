@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whatsappclone/controllers/verifyPhoneController.dart';
 import 'package:whatsappclone/utils/colors.dart';
-import 'package:whatsappclone/utils/txtHeadings.dart';
 import 'package:whatsappclone/utils/texts.dart';
 import 'package:whatsappclone/views/screens/smsVerification.dart';
 import 'package:whatsappclone/views/widgets/buttonWidget.dart';
@@ -24,7 +23,7 @@ class VerifyPhone extends StatelessWidget {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text(Headings.verifyPhoneHeading,
+                  child: Text("Verify Your Phone Number",
                     style: TextStyle(fontWeight: FontWeight.bold,
                         fontSize: 25, color: UiColors.headingClr),),
                 ),
@@ -32,7 +31,9 @@ class VerifyPhone extends StatelessWidget {
                   height: 30,
                 ),
                 const Text(Texts.verifyPhoneTxt, style: TextStyle(fontSize: 15),
-                  textAlign: TextAlign.center,),
+                  textAlign: TextAlign.center,
+
+                ),
                 Card(
                   child: CountryCodePicker(
                     padding: const EdgeInsets.all(0),
@@ -73,13 +74,15 @@ class VerifyPhone extends StatelessWidget {
                             title: "Phone Number",
                             inputType: TextInputType.phone,
                             cursorClr: UiColors.cursorColor,
-                            underlineClr: UiColors.textUnderLine,),
+                            underlineClr: UiColors.textUnderLine,
+                            ),
                         ),
                       ),
                     ]
                 ),
+                const SizedBox(height: 10,),
                 CommonButton(buttonText: "Next", func: () {
-                  Get.to(SmsVerification());
+                    Get.to(SmsVerification());
                 }, buttonClr: UiColors.btnClr),
 
               ],
