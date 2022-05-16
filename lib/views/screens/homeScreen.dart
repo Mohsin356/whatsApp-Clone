@@ -8,10 +8,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(length: 4, initialIndex: 1,
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text("WhatsApp Clone",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+          title: const Text("WhatsApp",style: TextStyle(fontSize: 25,),),
           backgroundColor: UiColors.appBarClr,
           actions: [
             IconButton(icon: const Icon(Icons.search), onPressed: () {}),
