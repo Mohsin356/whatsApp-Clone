@@ -7,7 +7,7 @@ import 'package:whatsappclone/utils/texts.dart';
 import 'package:get/get.dart';
 
 class PersonalInfo extends StatelessWidget {
-  PersonalInfo({Key? key}) : super(key: key);
+  const PersonalInfo({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(

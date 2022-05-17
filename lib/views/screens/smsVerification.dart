@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whatsappclone/utils/colors.dart';
@@ -48,14 +47,14 @@ class SmsVerification extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   fieldWidth: 30,
                   obscureText: true,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20
                   ),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   fieldStyle: FieldStyle.underline,
                     onChanged: (String? pin) {
                       if (pin?.length == 6) {
-                        print(pin);
+                        // print(pin);
                       }
                     }
                   // onCompleted: (pin)
