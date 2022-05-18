@@ -4,6 +4,7 @@ import 'package:whatsappclone/utils/colors.dart';
 import 'package:whatsappclone/views/pages/chatScreen.dart';
 import 'package:whatsappclone/views/pages/callScreen.dart';
 import 'package:get/get.dart';
+import 'package:whatsappclone/views/pages/statusScreen.dart';
 
 class HomeScreen extends StatelessWidget  {
     HomeScreen({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class HomeScreen extends StatelessWidget  {
           children: [
             const Text("Camera"),
             ChatScreen(),
-            const Text("Status"),
+            StatusScreen(),
             CallScreen(),
           ],
         ),
