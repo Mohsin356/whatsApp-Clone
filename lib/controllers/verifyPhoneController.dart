@@ -1,4 +1,4 @@
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
 class VerifyPhoneController extends GetxController{

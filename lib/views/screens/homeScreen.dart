@@ -49,10 +49,10 @@ class HomeScreen extends StatelessWidget  {
       body: SafeArea(
         child:TabBarView(
           controller: myTabController.controller,
-          children: const [
-            Text("Camera"),
+          children: [
+            const Text("Camera"),
             ChatScreen(),
-            Text("Status"),
+            const Text("Status"),
             CallScreen(),
           ],
         ),

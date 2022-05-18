@@ -5,6 +5,7 @@ class UiColors{
   static const headingClr=Color(0xff075E54);
   static const btnClr= Color(0xff075E54);
   static const txtClr= Colors.black;
+  static const txtClrWhite=Colors.white;
   static const timeTxtClr= Colors.grey;
   static const cursorColor= Color(0xff075E54);
   static const labelClr = Colors.grey;
@@ -13,4 +14,8 @@ class UiColors{
   static const appBarClr =Color(0xff075E54);
   static const popUpClr =Colors.white;
   static const iconBackgroundClr= Color(0xff075E54);
+  static const iconClr=Colors.white;
+  static const sendMsgBubbleClr=Color(0xff075E54);
+  static const receiveMsgBubbleClr=Colors.grey;
+  static const backgroundClr=Colors.white;
 }

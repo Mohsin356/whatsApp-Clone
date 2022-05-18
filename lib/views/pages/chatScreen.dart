@@ -1,26 +1,30 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsappclone/utils/colors.dart';
-import 'package:whatsappclone/models/chatsScreenModel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:whatsappclone/controllers/chatScreenController.dart';
+import 'package:get/get.dart';
+import 'package:whatsappclone/views/screens/ConversationScreen.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+   ChatScreen({Key? key}) : super(key: key);
+  final chatsController = Get.put(ChatScreenController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: ChatScreenList.length,
+          itemCount: chatsController.chatScreenList.length,
           itemBuilder: (context,i)=>  Column(
             children: [
               const Divider(
                 height: 12,
               ),
               ListTile(
-                onTap: (){},
+                onTap: (){
+                  Get.to(ConversationScreen());
+                },
                 leading: CachedNetworkImage(
-                  imageUrl: ChatScreenList[i].urlImg,
+                  imageUrl: chatsController.chatScreenList[i].urlImg,
                   imageBuilder: (context, imageProvider) => Container(
                     width: 50.0,
                     height: 50.0,
@@ -37,11 +41,11 @@ class ChatScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      ChatScreenList[i].name!,
+                      chatsController.chatScreenList[i].name!,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "${ChatScreenList[i].time!} ${ChatScreenList[i].timeZone}",
+                      "${chatsController.chatScreenList[i].time!} ${chatsController.chatScreenList[i].timeZone}",
                       style: const TextStyle(color: UiColors.timeTxtClr,fontSize: 14),
                     )
                   ],
@@ -49,7 +53,7 @@ class ChatScreen extends StatelessWidget {
                 subtitle:  Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: Text(
-                    ChatScreenList[i].message!,
+                    chatsController.chatScreenList[i].message!,
                     style: const TextStyle(fontSize: 15),
                   ),
                 ),
