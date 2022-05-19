@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whatsappclone/views/screens/agreeTerms.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
+import 'package:whatsappclone/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,11 +24,11 @@ class MyApp extends StatelessWidget {
           title:  const Text(
             'WhatsApp',
             style: TextStyle(
-                color: Colors.white,
+                color: UiColors.txtClrWhite,
                 fontSize: 25,
                 fontFamily: 'assets/fonts/overpass_regular.otf'),
           ),
-          backgroundColor:  const Color(0xff075E54),
+          backgroundColor:  UiColors.splashBackgroundClr,
           showLoader: true,
           loadingText: const Text("Loading..."),
           navigator: AgreeTerms(),

@@ -22,5 +22,6 @@ class UiColors{
   static const backgroundClr=Colors.white;
   static const callRejectedClr=Colors.red;
   static const callAcceptedClr=Colors.green;
+  static const splashBackgroundClr=Color(0xff075E54);
 
 }
