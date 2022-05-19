@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GestureDetector(
+        onTap: () {
+      FocusManager.instance.primaryFocus?.unfocus();
+    },child:GetMaterialApp(
       title: 'Whatsapp',
       debugShowCheckedModeBanner: false,
       home: EasySplashScreen(
@@ -30,6 +33,7 @@ class MyApp extends StatelessWidget {
           navigator: AgreeTerms(),
           durationInSeconds: 5,
       ),
+    ),
 
     );
   }
